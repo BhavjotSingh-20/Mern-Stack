@@ -43,15 +43,15 @@ var userSchema =  new mongoose.Schema ({
 
 userSchema.virtual("password")
      .set(function(password) {
-const ProductCardSchema =  new mongoose.Schema({
-     product :{
-         type:ObjectId,
-         ref:"Product"
-     },
-     name:String,
-     count:Number,
-     price:Number
-})
+// const ProductCardSchema =  new mongoose.Schema({
+//      product :{
+//          type:ObjectId,
+//          ref:"Product"
+//      },
+//      name:String,
+//      count:Number,
+//      price:Number
+// })
          this._password = password
          this.salt = uuidv1()
          console.log(this.salt)
