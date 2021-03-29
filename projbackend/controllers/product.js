@@ -133,6 +133,7 @@ exports.getAllProducts = (req,res) => {
     let sortBy = req.query.sortBy ?  req.query.sortBy  :  "_id"
     Product.find().select("-photo").populate("category").sort([[sortBy,"asc"]]).limit(limit).exec((err,products) => {
         if(err) {
+            console.log(err)
             res.status(400).json({
                 error:"No Product Found",
                 err
