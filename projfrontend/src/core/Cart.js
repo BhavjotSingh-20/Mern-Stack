@@ -18,7 +18,7 @@ function Cart() {
             return (
                 <div>
                     <h2>This section is to load products</h2>
-                    {products.map((product,index) => {
+                    {products && products.map((product,index) => {
                     return <Card key={index} product={product} addToCart={false}
                      removeFromCart={true}
                      setReload={setReload}
