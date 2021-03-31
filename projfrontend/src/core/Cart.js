@@ -6,6 +6,7 @@ import Card from './Card';
 import { getProducts } from './helper/coreapicalls';
 import { loadCart } from './helper/CartHelper';
 import StripeCheckout from './StripeCheckout';
+import PayPal from './PayPal';
 
 
 function Cart() {
@@ -14,11 +15,11 @@ function Cart() {
         useEffect(() => {
             setProducts(loadCart())
         },[reload])
-        const loadAllProducts = () => {
+        const loadAllProducts = (products) => {
             return (
                 <div>
                     <h2>This section is to load products</h2>
-                    {products && products.map((product,index) => {
+                    { products.map((product,index) => {
                     return <Card key={index} product={product} addToCart={false}
                      removeFromCart={true}
                      setReload={setReload}
@@ -39,9 +40,11 @@ function Cart() {
     return (
         <Base title="Cartpage" description="Ready to checkout" >
             <div className="row text-center ">
-                <div className="col-6">{loadAllProducts()}</div>
+                <div className="col-6">{products.length > 0 ? (loadAllProducts(products)) : (<h3>No Products in Cart</h3>)}</div>
                 <div className="col-6"><StripeCheckout products={products} reload={reload}
-                setReload={setReload}/></div>
+                setReload={setReload}/>
+                <PayPal products={products}setReload={setReload}/>
+                </div>
             
             </div>
         </Base>

@@ -40,6 +40,7 @@ const  StripeCheckout = ({products,setReload =f=>f,reload = undefined})  => {
         }).then(response => {
             
             cartEmpty()
+            setReload(!reload)
         }).catch(err => console.log(err))
     }
     const showStripeButton = () => {
